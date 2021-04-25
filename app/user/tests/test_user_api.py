@@ -45,7 +45,7 @@ class PublicUserApiTests(TestCase):
             'password': 'testpass123',
             'name': 'Test Name',
         }
-        get_user_model().objects.create(**payload)
+        get_user_model().objects.create_user(**payload)
         res = self.client.post(CREATE_USER_URL)
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
@@ -72,7 +72,7 @@ class PublicUserApiTests(TestCase):
             'email': 'test@example.com',
             'password': 'test-user-password123',
         }
-        get_user_model().objects.create(**user_details)
+        get_user_model().objects.create_user(**user_details)
 
         payload = {
             'email': user_details['email'],
@@ -85,7 +85,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_bad_credentials(self):
         """Test returns error if credentials invalid."""
-        get_user_model().objects.create(
+        get_user_model().objects.create_user(
             email='test@example.com',
             password='goodpass',
         )
