@@ -90,7 +90,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 @extend_schema_view(
     list=extend_schema(
         parameters=[
-            OpenApiParameter('assigned_only', OpenApiTypes.INT),
+            OpenApiParameter('assigned_only', OpenApiTypes.INT, enum=[0, 1]),
         ]
     )
 )
