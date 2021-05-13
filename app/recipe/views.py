@@ -90,7 +90,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
 @extend_schema_view(
     list=extend_schema(
         parameters=[
-            OpenApiParameter('assigned_only', OpenApiTypes.INT, enum=[0, 1]),
+            OpenApiParameter(
+                'assigned_only',
+                OpenApiTypes.INT, enum=[0, 1],
+                description='Filter by items assigned to recipes.',
+            ),
         ]
     )
 )
